@@ -1,0 +1,86 @@
+body {
+    background-color: #f4f8fb;
+    font-family: Arial, sans-serif;
+}
+
+.custom-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.008);
+}
+
+.custom-btn {
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.page-title {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.hero-image {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+section {
+    margin-bottom: 50px;
+}
+/*navbar*/
+.navbar-brand {
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/*doctors*/
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0; 
+}
+
+.custom-card {
+    transition:0.3s;
+}
+
+.custom-card:hover {
+    transition: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/*doctors search*/
+.input-group {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.input-group-text {
+    border-right: none;
+}
+
+.input-group .form-control {
+    border-left: none;
+    padding: 15px;
+}
+
+.input-group .form-control:focus {
+    box-shadow: none;
+}
