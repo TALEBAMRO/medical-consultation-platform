@@ -65,6 +65,15 @@ function Navbar() {
                     </button>
             </li>
 
+            <li className="nav-item">
+                <Link 
+                className="nav-link fw-semibold"
+                to="/my-appointments"
+                >
+                    My Appointments
+                </Link>
+            </li>
+
             <li className="nav-item ms-2">
                 <Link
                 className="btn btn-outline-primary"

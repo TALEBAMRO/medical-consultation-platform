@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useParams} from "react-router-dom";
 import doctors from "../data/doctors";
+import {toast} from "react-toastify";
 
 function Appointment () {
     const [formData, setFormData] = useState({
@@ -28,8 +29,34 @@ function Appointment () {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        if (
+            !formData.name ||
+            !formData.email ||
+            !formData.phone ||
+            !formData.date ||
+            !formData.time
+        ) {
+            toast.error("Please fill all fields")
+            return;
+        }
+
+        const appointments = 
+                JSON.parse(localStorage.getItem("appointments")) || [];
+                appointments.push({
+                    doctorName: doctor?.name,
+                    doctorSpecialty: doctor?.specialty,
+                    ...formData,
+                });
+
+                localStorage.setItem(
+                    "appointments", JSON.stringify(appointments)
+                );
+
+        toast.success("Appointment booked successfully")
         setSuccess(true);
     };
+
 
     return (
         <div className="container py-5">

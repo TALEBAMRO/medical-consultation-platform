@@ -9,6 +9,9 @@ import Register from "./pages/Register";
 import Doctors from "./pages/Doctors";
 import Appointment from "./pages/Appointment";
 import NotFound from "./pages/NotFound";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import MyAppointments from "./pages/MyAppointments";
 import "./App.css";
 
 function App() {
@@ -25,10 +28,16 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/appointment/:id" element={<Appointment/>} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="/my-appointments" element={<MyAppointments />} />
                 </Routes>
                 </PageLoader>
             </main>
             <Footer />
+            <ToastContainer 
+                    position="top-right"
+                    autoClose={300}
+                    theme="colored"
+                    />
         </BrowserRouter>
     );
 }

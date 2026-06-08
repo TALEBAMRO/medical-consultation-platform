@@ -1,4 +1,12 @@
+import {toast} from "react-toastify";
+
 function Login() {
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        toast.success("Login Successful");
+    };
+
     return (
     <div className="container py-5">
         <div className="row justify-content-center">
@@ -13,7 +21,7 @@ function Login() {
                 Sign in to access your medical consultations
                 </p>
 
-                <form>
+                <form onSubmit={handleLogin}>
                 <div className="mb-3">
                     <label className="form-label">
                     Email Address
