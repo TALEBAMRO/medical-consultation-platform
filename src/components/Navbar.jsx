@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
+import {useContext} from "react";
+import ThemeContext from "../context/ThemeContext";
 
 function Navbar() {
+
+    const {darkMode, setDarkMode} = useContext(ThemeContext);
+
     return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav className={`navbar navbar-expand-lg ${
+        darkMode ? "navbar-dark bg-dark" : "navbar-light bg-white"
+    } `}>
         <div className="container">
 
         <Link className="navbar-brand fw-bold text-primary fs-3" to="/">
@@ -40,6 +47,22 @@ function Navbar() {
                 >
                 Doctors
                 </Link>
+            </li>
+
+            <li className="nav-item ms-2">
+                <button 
+                    className="btn btn-outline-secondary"
+                    onClick={() => setDarkMode(!darkMode)}>
+                        {darkMode ? (
+                            <>
+                            ☀️
+                            </>
+                        ) : (
+                            <>
+                            🌙
+                            </>
+                        )}
+                    </button>
             </li>
 
             <li className="nav-item ms-2">

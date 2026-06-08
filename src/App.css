@@ -13,3 +13,71 @@ body,
 .flex-grow-1 {
     flex: 1;
 }
+
+/*DarkMode*/
+body, 
+.navbar,
+.card,
+.btn,
+footer,
+.form-control,
+.form-select,
+.container,
+main {
+    transition: all 0.4s ease-in-out;
+}
+
+.dark-mode {
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #111827
+        );
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.dark-mode .card {
+    background-color: #1e293b;
+    border: none;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.dark-mode .card:hover {
+    transform: translateY(-5px);
+}
+
+.dark-mode img {
+    filter: brightness(0.9);
+}
+
+.dark-mode .navbar {
+    background-color: #1e1e1e !important;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background-color: #2a2a2a;
+    color: white;
+    border-color: #444;
+}
+
+.dark-mode .form-control::placeholder {
+    color:#bbb;
+}
+
+.dark-mode .text-muted {
+    color: #c0c0c0 !important;
+}
+
+.dark-mode .footer {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode .container,
+.dark-mode main {
+    color:white;
+}

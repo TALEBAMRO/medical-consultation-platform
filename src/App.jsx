@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Doctors from "./pages/Doctors";
 import Appointment from "./pages/Appointment";
+import NotFound from "./pages/NotFound";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/appointment/:id" element={<Appointment/>} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
                 </PageLoader>
             </main>

@@ -7,24 +7,21 @@ function PageLoader({children}) {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        // defer setting loading to avoid synchronous setState inside effect
-        const startTimer = setTimeout(() => setLoading(true), 0);
+        const startTimeout = setTimeout(() => {
+            setLoading(true);
+        }, 0);
 
-        const endTimer = setTimeout(() => {
+        const timer = setTimeout(() => {
             setLoading(false);
-        }, 700);
+        }, 500);
 
         return () => {
-            clearTimeout(startTimer);
-            clearTimeout(endTimer);
+            clearTimeout(startTimeout);
+            clearTimeout(timer);
         };
-    }, [location]);
+    }, [location.pathname]);
 
-    if (loading) {
-        return <Loading />;
-    }
-
-    return children;
+    return loading ? <Loading /> : children;
 }
 
 export default PageLoader;
