@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyAppointments from "./pages/MyAppointments";
+import Favorites from "./pages/Favorites";
 import "./App.css";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/appointment/:id" element={<Appointment/>} />
                     <Route path="*" element={<NotFound />} />
                     <Route path="/my-appointments" element={<MyAppointments />} />
+                    <Route path="/favorites" element={<Favorites />} />
                 </Routes>
                 </PageLoader>
             </main>

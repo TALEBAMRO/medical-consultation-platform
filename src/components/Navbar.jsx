@@ -49,22 +49,6 @@ function Navbar() {
                 </Link>
             </li>
 
-            <li className="nav-item ms-2">
-                <button 
-                    className="btn btn-outline-secondary"
-                    onClick={() => setDarkMode(!darkMode)}>
-                        {darkMode ? (
-                            <>
-                            ☀️
-                            </>
-                        ) : (
-                            <>
-                            🌙
-                            </>
-                        )}
-                    </button>
-            </li>
-
             <li className="nav-item">
                 <Link 
                 className="nav-link fw-semibold"
@@ -72,6 +56,13 @@ function Navbar() {
                 >
                     My Appointments
                 </Link>
+            </li>
+
+            <li className="nav-item">
+                <Link
+                    className="nav-link fw-semibold" to="/favorites">
+                        Favorites
+                    </Link>
             </li>
 
             <li className="nav-item ms-2">
@@ -90,6 +81,22 @@ function Navbar() {
                 >
                 Register
                 </Link>
+            </li>
+
+            <li className="nav-item ms-2">
+                <button 
+                    className="btn btn-outline-secondary"
+                    onClick={() => setDarkMode(!darkMode)}>
+                        {darkMode ? (
+                            <>
+                            ☀️
+                            </>
+                        ) : (
+                            <>
+                            🌙
+                            </>
+                        )}
+                    </button>
             </li>
 
             </ul>
