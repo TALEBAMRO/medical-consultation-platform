@@ -81,3 +81,38 @@ main {
 .dark-mode main {
     color:white;
 }
+
+/*Dashboard*/
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/*Watermark*/
+.watermark {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 80vw;
+    height: 80vh;
+
+    background-image: url("/watermark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    opacity: 0.2;
+
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    z-index: -1;
+}

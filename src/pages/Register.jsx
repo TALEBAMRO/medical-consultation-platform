@@ -1,4 +1,17 @@
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
+
 function Register() {
+    const navigate = useNavigate();
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+
+        localStorage.setItem("user", "true");
+        toast.success("Account created successfully!");
+        navigate("/dashboard");
+    }
+
     return (
     <div className="container py-5">
         <div className="row justify-content-center">
@@ -13,7 +26,7 @@ function Register() {
                 Join our medical consultation platform today
                 </p>
 
-                <form>
+                <form onSubmit={handleRegister}>
                 <div className="mb-3">
                     <label className="form-label">
                     Full Name

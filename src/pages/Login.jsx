@@ -1,10 +1,16 @@
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
 
+    const navigate = useNavigate();
+
     const handleLogin = (e) => {
         e.preventDefault();
+        localStorage.setItem("user", "true");
         toast.success("Login Successful");
+
+        navigate("/dashboard");
     };
 
     return (

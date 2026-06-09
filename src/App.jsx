@@ -13,11 +13,14 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyAppointments from "./pages/MyAppointments";
 import Favorites from "./pages/Favorites";
+import Dashboard from "./pages/Dashboard.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
 
 function App() {
     return ( 
         <BrowserRouter>
+        <div className="watermark"></div>
             <Navbar />
             <main className="flex-grow-1">
                 <PageLoader>
@@ -27,10 +30,11 @@ function App() {
                     <Route path="/doctors/:id" element={<DoctorDetails/>} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/appointment/:id" element={<Appointment/>} />
+                    <Route path="/appointment/:id" element={<ProtectedRoute> <Appointment/> </ProtectedRoute>} />
                     <Route path="*" element={<NotFound />} />
-                    <Route path="/my-appointments" element={<MyAppointments />} />
-                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="/my-appointments" element={<ProtectedRoute> <MyAppointments /> </ProtectedRoute>} />
+                    <Route path="/favorites" element={<ProtectedRoute> <Favorites /> </ProtectedRoute>} />
+                    <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
                 </Routes>
                 </PageLoader>
             </main>
