@@ -48,6 +48,9 @@ npm run dev
 * Real-time video consultations
 * Doctor availability scheduling
 
+## Live Demo
+
+https://medical-consultation-platform-six.vercel.app
 ## Author
 
 **Taleb Amro**
