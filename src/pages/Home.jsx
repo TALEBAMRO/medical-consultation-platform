@@ -1,4 +1,5 @@
 import home from "../assets/images/home.avif";
+import {Link} from "react-router-dom"
 
 function Home() {
     return (
@@ -17,13 +18,13 @@ function Home() {
                         and receive professional medical consultations online.
                     </p>
 
-                    <button className="btn btn-primary btn-lg me-3">
-                        Find Doctors
-                    </button>
+                    <Link to="/doctors" className="btn btn-primary me-3">
+                    Find Doctors
+                    </Link>
 
-                    <button className="btn btn-primary btn-lg me-3">
+                    <a href="#services" className="btn btn-outline-primary">
                         Learn More
-                    </button>
+                    </a>
                 </div>
 
                 <div className="col-lg-6 text-center">
@@ -36,7 +37,7 @@ function Home() {
             </div>
         </section>
 
-        <section className="container py-5">
+        <section id="services" className="container py-5">
             <h2 className="text-center page-title mb-5">
                 Our Services
             </h2>
@@ -47,7 +48,7 @@ function Home() {
                         <div className="card-body text-center">
                             <h4>Online Consultation</h4>
                             <p className="text-muted">
-                                Consult doctors remotely from anywhere
+                                Connect with experienced healthcare professionals through secure virtual consultations from the comfort of your home.
                             </p>
                         </div>
                     </div>
@@ -59,7 +60,7 @@ function Home() {
                             <h4>Appointment Booking</h4>
 
                             <p className="text-muted">
-                                Schedule appointments quickly and easily.
+                                Book appointments with your preferred doctors quickly and efficiently using our easy-to-use scheduling system.
                             </p>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ function Home() {
                             <h4>Medical Records</h4>
 
                             <p className="text-muted">
-                                Access your medical information securely.
+                                Access and manage your medical information securely anytime, ensuring continuity of care and convenience.
                             </p>
                         </div>
                     </div>

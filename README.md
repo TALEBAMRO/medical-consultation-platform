@@ -1,6 +1,6 @@
 # Medical Consultation Platform
 
-A modern and responsive medical consultation platform built with **React**, **React Router**, and **Bootstrap**. The application allows users to browse doctors, search by specialty, manage appointments, and experience a user-friendly authentication system.
+A modern and responsive medical consultation platform built with **React**, **React Router**, and **Bootstrap**. The application enables users to browse doctors, manage appointments, join online consultations, and experience a seamless authentication workflow.
 
 ## Features
 
@@ -10,6 +10,8 @@ A modern and responsive medical consultation platform built with **React**, **Re
 * Doctor Details Page
 * Appointment Booking System
 * Appointment Confirmation Page
+* Online & In-Person Consultation Support
+* Join Online Consultation Feature
 * My Appointments Management
 * Favorite Doctors System
 * User Registration and Login
@@ -38,8 +40,16 @@ npm install
 npm run dev
 ```
 
+## Future Improvements
+
+* Backend integration with Node.js and Express
+* Database support using MongoDB
+* JWT-based authentication
+* Real-time video consultations
+* Doctor availability scheduling
+
 ## Author
 
-Taleb Amro
+**Taleb Amro**
 
 Computer Engineer passionate about **Web Development, React, and AI-powered applications**.

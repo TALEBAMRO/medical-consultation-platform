@@ -11,6 +11,7 @@ function Appointment () {
         date: "",
         time: "",
         notes: "",
+        type: "Online",
     });
 
     const [success, setSuccess] = useState(false);
@@ -46,6 +47,10 @@ function Appointment () {
                 appointments.push({
                     doctorName: doctor?.name,
                     doctorSpecialty: doctor?.specialty,
+                    meetingLink:
+                        formData.type === "Online"
+                            ? "https://meet.google.com/"
+                            : "",
                     ...formData,
                 });
 
@@ -118,6 +123,13 @@ function Appointment () {
                         <strong>Time:</strong>{formData.time}
                     </p>
 
+                    <p>
+                            <strong>Consultation Type:</strong> {" "}
+                            {formData.type === "Online"
+                                ? "🎥 Online Consultation"
+                                : "🏥 In-Person Visit" }
+                    </p>
+
                     {formData.notes && (
                         <p>
                             <strong>Notes:</strong>{formData.notes}
@@ -164,6 +176,25 @@ function Appointment () {
                         </label>
 
                         <input type="time" className="form-control" name="time" value={formData.time} onChange={handleChange} required />
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">
+                            Consultation Type
+                        </label>
+                        <select 
+                            className="form-select"
+                            name="type"
+                            value={formData.type}
+                            onChange={handleChange}
+                        >
+                            <option value="Online">
+                                🎥 Online Consultation
+                            </option>
+                            <option value="In-Person">
+                                🏥 In-Person Visit
+                            </option>
+                        </select>
                     </div>
 
                     <div className="mb-3">

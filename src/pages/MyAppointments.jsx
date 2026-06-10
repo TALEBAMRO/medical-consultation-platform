@@ -67,12 +67,32 @@ function MyAppointments() {
                                         <strong>Time:</strong>{" "}
                                         {appointment.time}
                                     </p>
+                                    <p>
+                                        <strong>Type:</strong>{" "}
+                                        {appointment.type === "Online"
+                                            ? "🎥 Online Consultation"
+                                            : "🏥 In-Person Visit"}
+                                    </p>
 
                                     {appointment.notes && (
                                         <p>
                                         <strong>Notes:</strong>{" "}
                                         {appointment.notes}
                                     </p>
+                                    )}
+
+                                    {appointment.type === "Online" ? (
+                                        <a 
+                                            href={appointment.meetingLink}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="btn btn-success btn-sm mt-3 me-2">
+                                                🎥 Join Consultation
+                                            </a>
+                                    ) : (
+                                        <button className="btn btn-outline-primary btn-sm mt-3 me-2" disabled>
+                                            In-Person Visit
+                                        </button>
                                     )}
 
                                     <button className="btn btn-danger btn-sm mt-3"
