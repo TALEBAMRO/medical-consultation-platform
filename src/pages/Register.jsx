@@ -1,13 +1,49 @@
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 function Register() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
 
+        if (!name || !email || !password || !confirmPassword) {
+            toast.error("PLease fill in all fields");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            toast.error("Please enter a valid email");
+            return;
+        }
+
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            toast.error("Passwords do not match");
+            return;
+        }
+
+        const userData ={
+            name,
+            email,
+            password,
+        };
+
+        localStorage.setItem("registeredUser", JSON.stringify(userData));
         localStorage.setItem("user", "true");
+
         toast.success("Account created successfully!");
         navigate("/dashboard");
     }
@@ -33,9 +69,11 @@ function Register() {
                     </label>
 
                     <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter your full name"
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter your full name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
                 </div>
 
@@ -48,6 +86,8 @@ function Register() {
                     type="email"
                     className="form-control"
                     placeholder="example@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
 
@@ -60,6 +100,8 @@ function Register() {
                     type="password"
                     className="form-control"
                     placeholder="********"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
 
@@ -72,6 +114,8 @@ function Register() {
                     type="password"
                     className="form-control"
                     placeholder="********"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                 </div>
 

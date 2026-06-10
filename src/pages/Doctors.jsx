@@ -5,11 +5,24 @@ import doctors from "../data/doctors";
 function Doctors() {
 
     const [search,  setSearch] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const doctorsPerPage = 6;
 
             const filteredDoctors = doctors.filter(
                 (doctor) =>
                     doctor.name.toLowerCase().includes(search.toLowerCase()) ||
                     doctor.specialty.toLowerCase().includes(search.toLowerCase())
+            );
+
+            const indexOfLastDoctor = currentPage * doctorsPerPage;
+            const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
+
+            const currentDoctors = filteredDoctors.slice(
+                indexOfFirstDoctor, indexOfLastDoctor 
+            );
+
+            const totalPages = Math.ceil(
+                filteredDoctors.length / doctorsPerPage 
             );
 
             return (
@@ -32,7 +45,10 @@ function Doctors() {
                                 className="form-control"
                                 placeholder="Search by doctor name or specialty..."
                                 value={search}
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={(e) => {
+                                    setSearch(e.target.value);
+                                    setCurrentPage(1);
+                                }}
                             />
 
                             </div>
@@ -40,7 +56,7 @@ function Doctors() {
                         </div>
 
                     <div className="row">
-                        {filteredDoctors.map((doctor) => (
+                        {currentDoctors.map((doctor) => (
                             <DoctorCard
                             key={doctor.id}
                             doctor={doctor}
@@ -53,8 +69,50 @@ function Doctors() {
                             </div>
                         )}
                     </div>
-                </div>
-            );
-}
+
+                    {totalPages > 1 && (
+                        <div className="d-flex justify-content-center mt-5">
+                            <nav>
+                                <ul className="pagination">
+                                    <li 
+                                        className={`page-item ${
+                                            currentPage === 1 ? "disabled" : ""
+                                        }`}
+                                    >
+                                        <button 
+                                        className="page-link" 
+                                        onClick={() => 
+                                            currentPage > 1 && setCurrentPage(currentPage - 1)
+                                        }
+                                        >
+                                            Previous
+                                        </button>
+                                    </li>
+                                    {[...Array(totalPages)].map((_, index) => (
+                                        <li key={index + 1}
+                                        className={`page-item ${
+                                            currentPage === index + 1 ? "active" : "" }`}>
+                                                <button className="page-link" onClick={() => setCurrentPage(index+1)}>
+                                                    {index + 1}
+                                                </button>
+                                            </li>
+                                    ))}
+
+                                    <li className={`page-item ${ currentPage === totalPages ? "disabled" : ""}`}>
+                                        <button 
+                                            className="page-link" 
+                                            onClick={() => 
+                                                currentPage < totalPages && setCurrentPage(currentPage + 1)
+                                            }>
+                                            Next
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+            )}
+            </div>
+        );
+    }
 
 export default Doctors;

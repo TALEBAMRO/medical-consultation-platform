@@ -1,10 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useContext} from "react";
+import {toast} from "react-toastify";
 import ThemeContext from "../context/ThemeContext";
 
 function Navbar() {
 
     const {darkMode, setDarkMode} = useContext(ThemeContext);
+
+    const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem("user") === "true";
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+
+        toast.success("Logged out successfully");
+
+        navigate("/");
+        window.location.reload();
+    };
 
     return (
     <nav className={`navbar navbar-expand-lg ${
@@ -65,29 +77,37 @@ function Navbar() {
                     </Link>
             </li>
 
-            <li classname="nav-item">
+            <li className="nav-item">
                 <Link className="nav-link" to="/dashboard">
                 Dashboard
                 </Link>
             </li>
 
-            <li className="nav-item ms-2">
-                <Link
-                className="btn btn-outline-primary"
-                to="/login"
-                >
-                Login
-                </Link>
-            </li>
+            {!isLoggedIn ? (
+                <>
+                <li className="nav-item ms-2">
+                    <Link 
+                        className="btn btn-outline-primary" to="/login"
+                    >
+                        Login
+                    </Link>
+                </li>
 
-            <li className="nav-item ms-2">
-                <Link
-                className="btn btn-primary"
-                to="/register"
-                >
-                Register
-                </Link>
-            </li>
+                <li className="nav-item ms-2">
+                    <Link 
+                        className="btn btn-primary" to="/register"
+                    >
+                        Register
+                    </Link>
+                </li>
+                    </>
+            ) : (
+                <li className="nav-item ms-2">
+                    <button className="btn btn-danger" onClick={handleLogout}>
+                        Logout
+                    </button>
+                </li>
+            )}
 
             <li className="nav-item ms-2">
                 <button 

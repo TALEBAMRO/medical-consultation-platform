@@ -1,16 +1,38 @@
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 function Login() {
+    const [email,setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        localStorage.setItem("user", "true");
-        toast.success("Login Successful");
 
-        navigate("/dashboard");
+        if (!email || !password) {
+            toast.error("Please fill in all fields");
+            return;
+        }
+
+        const savedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+        if (!savedUser) {
+            toast.error("No account found, Please register first.");
+            return;
+        }
+
+        if (
+            savedUser.email === email &&
+            savedUser.password === password 
+        ) {
+            localStorage.setItem("user", "true");
+            toast.success("Login Successful");
+            navigate("/dashboard");
+        } else {
+            toast.error("Invalid email or password");
+        }
     };
 
     return (
@@ -37,6 +59,8 @@ function Login() {
                     type="email"
                     className="form-control"
                     placeholder="example@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
 
@@ -49,6 +73,8 @@ function Login() {
                     type="password"
                     className="form-control"
                     placeholder="********"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
 
