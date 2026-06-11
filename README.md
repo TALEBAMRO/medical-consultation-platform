@@ -48,9 +48,32 @@ npm run dev
 * Real-time video consultations
 * Doctor availability scheduling
 
+## Screenshots
+
+### Home Page
+
+![Home Page](screenshots/home-page.png)
+
+### Doctors Page
+
+![Doctors Page](screenshots/doctors.png)
+
+### Doctor Profile
+
+![Doctor Profile](screenshots/doctor-profile.png)
+
+### Appointments
+
+![Appointments](screenshots/appointment.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
 ## Live Demo
 
-https://medical-consultation-platform-six.vercel.app
+<https://medical-consultation-platform-six.vercel.app>
+
 ## Author
 
 **Taleb Amro**
